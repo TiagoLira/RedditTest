@@ -9,7 +9,7 @@
 import UIKit
 import reddift
 
-class ListViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
 

@@ -37,7 +37,6 @@ class RedditManager {
             print(error)
             completion(nil)
         }
-
     }
 
     func getLinks(subreddit: Subreddit, completion: @escaping (([Link]?)->())) {
@@ -57,6 +56,24 @@ class RedditManager {
             print(error)
             completion(nil)
         }
+    }
 
+    func getChildren(link: Link, completion: @escaping (([Thing]?)->())) {
+        print("get list")
+        do {
+            try session.getArticles(link, sort: .top, completion: { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                    completion(nil)
+                case .success(let listing):
+                    let list = listing.1.children.flatMap({ $0 as? Comment })
+                    completion(list)
+                }
+            })
+        } catch {
+            print(error)
+            completion(nil)
+        }
     }
 }

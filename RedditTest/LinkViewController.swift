@@ -44,4 +44,11 @@ class LinkViewController: UIViewController, UIWebViewDelegate {
         self.indicator.isHidden = true
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toComments",
+            let controller = segue.destination as? CommentsViewController {
+            controller.link = link
+        }
+    }
+
 }

@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="1775" y="-281"/>
         </scene>
-        <!--Link View Controller-->
+        <!--Title-->
         <scene sceneID="bJ9-kD-kOp">
             <objects>
                 <viewController id="VCm-da-SLk" customClass="LinkViewController" customModule="RedditTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,6 +187,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GJ7-YK-dim"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="USV-eZ-a9Q">
+                        <barButtonItem key="rightBarButtonItem" title="Comments" id="OEb-CC-6Pq">
+                            <connections>
+                                <segue destination="orM-n6-lc1" kind="show" identifier="toComments" id="9sO-Ei-fjD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="indicator" destination="BEu-qA-MJf" id="oK4-i2-sEh"/>
                         <outlet property="webView" destination="sf0-ZL-GwI" id="7Az-cG-6iu"/>
@@ -195,6 +202,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVx-LQ-HIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2588" y="-281.10944527736132"/>
+        </scene>
+        <!--Comments View Controller-->
+        <scene sceneID="he5-mb-RrZ">
+            <objects>
+                <viewController id="orM-n6-lc1" customClass="CommentsViewController" customModule="RedditTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h29-KL-Dxq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-ag-ofV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" textLabel="PDe-ps-ubL" detailTextLabel="5mt-lz-Oc7" style="IBUITableViewCellStyleSubtitle" id="5mJ-Ue-tqq" customClass="CommentCell" customModule="RedditTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5mJ-Ue-tqq" id="Fm2-AB-Q9E">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PDe-ps-ubL">
+                                                    <rect key="frame" x="15" y="31.5" width="30" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5mt-lz-Oc7">
+                                                    <rect key="frame" x="15" y="52" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="orM-n6-lc1" id="CWP-23-wOO"/>
+                                    <outlet property="delegate" destination="orM-n6-lc1" id="TFj-pJ-hvX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DlR-ag-ofV" firstAttribute="trailing" secondItem="3q0-WT-viC" secondAttribute="trailing" id="ID1-QN-yRD"/>
+                            <constraint firstItem="DlR-ag-ofV" firstAttribute="top" secondItem="3q0-WT-viC" secondAttribute="top" id="Lfl-DK-Es4"/>
+                            <constraint firstItem="DlR-ag-ofV" firstAttribute="leading" secondItem="3q0-WT-viC" secondAttribute="leading" id="UNn-lZ-aSU"/>
+                            <constraint firstItem="DlR-ag-ofV" firstAttribute="bottom" secondItem="3q0-WT-viC" secondAttribute="bottom" id="wMp-Gf-6YE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3q0-WT-viC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iY8-Bm-b0e"/>
+                    <connections>
+                        <outlet property="table" destination="DlR-ag-ofV" id="wJz-tc-WQ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UUu-R4-6vK" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3353" y="-281"/>
         </scene>
     </scenes>
 </document>
